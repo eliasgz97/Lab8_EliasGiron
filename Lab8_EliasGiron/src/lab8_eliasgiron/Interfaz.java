@@ -42,7 +42,6 @@ public class Interfaz extends javax.swing.JFrame {
         jb_agregar = new javax.swing.JButton();
         pgb_super = new javax.swing.JProgressBar();
         jb_abrir = new javax.swing.JButton();
-        cb_hacks = new javax.swing.JComboBox<>();
         jd_regular = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
         jb_agregarregular = new javax.swing.JButton();
@@ -51,7 +50,6 @@ public class Interfaz extends javax.swing.JFrame {
         jl_regulares = new javax.swing.JList<>();
         pgb_regular = new javax.swing.JProgressBar();
         jb_abrir2 = new javax.swing.JButton();
-        cb_regular = new javax.swing.JComboBox<>();
         jd_agregarhack = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -94,12 +92,6 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
 
-        cb_hacks.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cb_hacksItemStateChanged(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -109,8 +101,7 @@ public class Interfaz extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(53, 53, 53)
-                        .addComponent(cb_hacks, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(181, 181, 181))
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
                             .addGap(22, 22, 22)
@@ -127,13 +118,8 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
-                        .addComponent(cb_hacks, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jb_simulacion)
@@ -194,9 +180,7 @@ public class Interfaz extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(23, 23, 23)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(cb_regular, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addComponent(jb_agregarregular)
@@ -207,18 +191,13 @@ public class Interfaz extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(pgb_regular, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addComponent(cb_regular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -400,7 +379,7 @@ public class Interfaz extends javax.swing.JFrame {
 //                ar.escribirArchivo();
                 Archivos a = new Archivos("./hacks.txt");
                 a.cargarArchivo();
-                a.setHackeos(hacksregulares);
+                a.getHacks().add(hr);
                 try {
                     a.escribirArchivo();
                 } catch (IOException ex) {
@@ -425,7 +404,7 @@ public class Interfaz extends javax.swing.JFrame {
 //                DefaultComboBoxModel modelo3 = new DefaultComboBoxModel(ah.getHacksSupers().toArray());
                 Archivos a = new Archivos("./hackssupers.txt");
                 a.cargarArchivo();
-                a.setHackeos(hackssupers);
+                a.getHacks().add(hs);
                 try {
                     a.escribirArchivo();
                 } catch (IOException ex) {
@@ -449,9 +428,11 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void jb_simularMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_simularMouseClicked
         int caracteres = Integer.parseInt(JOptionPane.showInputDialog("Ingrese numero de caracteres con los que desea correr el hack"));
+        Archivos a = new Archivos("./hacks.txt");
+        a.cargarArchivo();
         if (jl_regulares.getSelectedIndex() >= 0) {
             int posicion = jl_regulares.getSelectedIndex();
-            random(hacksregulares.get(posicion).getRiesgo());
+            random(a.getHacks().get(posicion).getRiesgo());
             ah.setDuracion(caracteres * 2);
             pgb_regular.setMaximum(caracteres * 2);
             ah.setPgb_hack(pgb_regular);
@@ -464,7 +445,9 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_jl_regularesMouseClicked
 
     private void jb_simulacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_simulacionMouseClicked
-        int numero = hackssupers.get(jl_super.getSelectedIndex()).getRiesgo();
+        Archivos a = new Archivos("./hackssupers.txt");
+        a.cargarArchivo();
+        int numero = a.getHacks().get(jl_super.getSelectedIndex()).getRiesgo();
         int caracteres2 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese numero de caracteres con los que desea correr el hack"));
         random(numero);
         ah.setDuracion(caracteres2);
@@ -479,16 +462,6 @@ public class Interfaz extends javax.swing.JFrame {
         pgb_super.setValue(0);
 
     }//GEN-LAST:event_jl_superMouseClicked
-
-    private void cb_hacksItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cb_hacksItemStateChanged
-        if (evt.getStateChange() == 1) {
-            HackSuper temp = (HackSuper) cb_hacks.getSelectedItem();
-            if (temp != null) {
-                jl_regulares.setModel(new DefaultListModel());
-
-            }
-        }
-    }//GEN-LAST:event_cb_hacksItemStateChanged
 
     private void jb_abrir2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_abrir2MouseClicked
         Archivos ar = new Archivos("./hacks.txt");
@@ -553,8 +526,6 @@ public class Interfaz extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Riesgo;
-    private javax.swing.JComboBox<String> cb_hacks;
-    private javax.swing.JComboBox<String> cb_regular;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
